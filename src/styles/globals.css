@@ -1,26 +1,133 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  background-color: #f0f2f5; /* Light gray background */
+  --primary-blue: #007bff;
+  --bg-light: #f8f9fa;
+  --text-main: #333333;
+  --text-sub: #666666;
+  --border-color: #e0e0e0;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f0f2f5;
   display: flex;
-  place-content: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: center;
 }
 
 #root {
   width: 100%;
-  max-width: 500px;
-  background: white;
   min-height: 100vh;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  background-color: var(--white);
   display: flex;
   flex-direction: column;
 }
+
+/* 태블릿/PC 대응: 모바일 앱 뷰 유지 */
+@media (min-width: 768px) {
+  #root {
+    max-width: 600px;
+    margin: 20px 0;
+    min-height: calc(100vh - 40px);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden; /* 둥근 모서리 유지 */
+  }
+}
+
+.container {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-area {
+  flex: 1;
+}
+
+.text-center { text-align: center; }
+
+/* 헤더 & 푸터 */
+.header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.footer-buttons {
+  padding: 20px 0;
+  display: flex;
+  gap: 10px;
+  background: white;
+}
+
+/* UI 요소: 카드형 선택 (구인/구직, 채널 등) */
+.card-option {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.card-option:hover {
+  border-color: var(--primary-blue);
+  background-color: #f8fbff;
+}
+
+.card-option.selected {
+  border-color: var(--primary-blue);
+  background-color: #f0f7ff;
+  box-shadow: 0 0 0 1px var(--primary-blue);
+}
+
+/* UI 요소: 둥근 태그 버튼 (담당업무, 요일) */
+.selectable-tag {
+  display: inline-block;
+  padding: 10px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  margin: 0 8px 8px 0;
+  font-size: 14px;
+  color: var(--text-sub);
+  cursor: pointer;
+  background: white;
+  transition: all 0.2s;
+}
+
+.selectable-tag.active {
+  background-color: var(--primary-blue);
+  color: white;
+  border-color: var(--primary-blue);
+}
+
+/* 폼 요소 공통 */
+.form-group { margin-bottom: 24px; }
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.input-group { display: flex; gap: 8px; align-items: center; }
+
 
 .container {
   flex-grow: 1;
