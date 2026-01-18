@@ -1,39 +1,37 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { UserFlow } from '../constants/onboarding';
+import { FlowType } from '../constants/onboarding';
 
 interface OnboardingState {
-  userFlow: UserFlow;
-  currentStepIndex: number;
-  formData: Record<string, any>; // 어떤 데이터든 담을 수 있게 허용
+  flow: FlowType;
+  stepIndex: number; // -1: 선택페이지, 0~4: 각 플로우 단계
+  data: any;
 }
 
 const initialState: OnboardingState = {
-  userFlow: null,
-  currentStepIndex: 0,
-  formData: {},
+  flow: null,
+  stepIndex: -1,
+  data: {}
 };
 
 export const onboardingSlice = createSlice({
   name: 'onboarding',
   initialState,
   reducers: {
-    setUserFlow: (state, action: PayloadAction<UserFlow>) => {
-      state.userFlow = action.payload;
-      state.currentStepIndex = 0;
-      state.formData = {};
+    setFlow: (state, action: PayloadAction<FlowType>) => {
+      state.flow = action.payload;
+      state.stepIndex = 0;
     },
-    nextStep: (state) => { state.currentStepIndex += 1; },
-    prevStep: (state) => { state.currentStepIndex -= 1; },
-    updateFormData: (state, action: PayloadAction<{ key: string; value: any }>) => {
-      state.formData[action.payload.key] = action.payload.value;
+    nextStep: (state) => { state.stepIndex += 1; },
+    updateData: (state, action: PayloadAction<any>) => {
+      state.data = { ...state.data, ...action.payload };
     },
-    resetOnboarding: (state) => {
-      state.userFlow = null;
-      state.currentStepIndex = 0;
-      state.formData = {};
+    reset: (state) => {
+      state.flow = null;
+      state.stepIndex = -1;
+      state.data = {};
     }
-  },
+  }
 });
 
-export const { setUserFlow, nextStep, prevStep, updateFormData, resetOnboarding } = onboardingSlice.actions;
+export const { setFlow, nextStep, updateData, reset } = onboardingSlice.actions;
 export default onboardingSlice.reducer;

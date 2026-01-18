@@ -1,49 +1,43 @@
 import React from 'react';
-import { useOnboardingFlow } from '../hooks/useOnboardingFlow';
-import OnboardingHeader from '../components/feature/OnboardingHeader';
-import FlowSelectStep from '../components/feature/FlowSelectStep';
-import ProcessIntroStep from '../components/feature/ProcessIntroStep';
-import PersonalInfoStep from '../components/feature/seeker/PersonalInfoStep';
-import AIServiceSelectStep from '../components/feature/seeker/AIServiceSelectStep';
-import AIServiceConnectStep from '../components/feature/seeker/AIServiceConnectStep';
-import CompanyInfoStep from '../components/feature/employer/CompanyInfoStep';
-import WorkConditionsStep from '../components/feature/employer/WorkConditionsStep';
-import AdditionalInfoStep from '../components/feature/employer/AdditionalInfoStep';
-import OnboardingFooter from '../components/feature/OnboardingFooter';
+import { useOnboarding } from '../hooks/useOnboarding';
+import OnboardingHeader from '../components/feature/common/OnboardingHeader';
+import FlowSelectStep from '../components/feature/common/FlowSelectStep';
+import SeekIntro from '../components/feature/seeker/SeekIntro';
+import SeekPersonalInfo from '../components/feature/seeker/SeekPersonalInfo';
+import EmpCompanyInfo from '../components/feature/employer/EmpCompanyInfo';
+import EmpWorkConditions from '../components/feature/employer/EmpWorkConditions';
+// ... 나머지 10개 컴포넌트 모두 import
 
 const OnboardingPage = () => {
-  const { currentSlide } = useOnboardingFlow();
+  const { currentKey } = useOnboarding();
 
-  if (!currentSlide) return <div>Loading...</div>;
-
-  const stepComponents: Record<string, React.ReactNode> = {
-    // 1. 공통
-    'FlowSelectStep': <FlowSelectStep />,
+const renderStep = () => {
+  switch (currentKey) {
+    case 'FlowSelectStep': return <FlowSelectStep />; // 사진 1 (공통)
     
-    // 2. 구인자 (Employer)
-    'EmpProcessIntro': <ProcessIntroStep type="employer" />,
-    'CompanyInfoStep': <CompanyInfoStep />,
-    'WorkConditionsStep': <WorkConditionsStep />,
-    'AdditionalInfoStep': <AdditionalInfoStep />,
-    'EmpCompleteStep': (
-      <div className="container text-center" style={{ justifyContent: 'center' }}>
-        <h2>적합한 지원자를 찾아<br/>담당자님의 연락처로<br/>연락드릴게요</h2>
-        <div style={{ marginTop: '40px' }}><OnboardingFooter /></div>
-      </div>
-    ),
+    // 구직자 플로우 (사진 1~5)
+    case 'SeekIntro': return <SeekIntro />;
+    case 'SeekPersonalInfo': return <SeekPersonalInfo />;
+    case 'SeekConsultInfo': return <SeekConsultInfo />;
+    case 'SeekConnect': return <SeekConnect />;
+    case 'SeekComplete': return <CompleteStep />;
 
-    // 3. 구직자 (Seeker)
-    'SeekProcessIntro': <ProcessIntroStep type="seeker" />,
-    'PersonalInfoStep': <PersonalInfoStep />,
-    'AIServiceSelectStep': <AIServiceSelectStep />,
-    'AIServiceConnectStep': <AIServiceConnectStep />,
-  };
+    // 구인자 플로우 (사진 6~10)
+    case 'EmpIntro': return <SeekIntro />; // Emp 전용 텍스트만 처리하면 됨
+    case 'EmpCompanyInfo': return <EmpCompanyInfo />;
+    case 'EmpWorkConditions': return <EmpWorkConditions />;
+    case 'EmpAdditionalInfo': return <EmpAdditionalInfo />;
+    case 'EmpComplete': return <CompleteStep />;
+    
+    default: return <FlowSelectStep />;
+  }
+};
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+    <div id="root">
       <OnboardingHeader />
-      <div style={{ flex: 1, overflowY: 'auto' }}>
-        {stepComponents[currentSlide.component] || <div>Page Not Found</div>}
+      <div className="onboarding-layout">
+        {renderStep()}
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useOnboardingFlow } from '../../../hooks/useOnboardingFlow';
+import { useOnboardingFlow } from '../../../hooks/useOnboarding';
 import OnboardingFooter from '../OnboardingFooter';
 import RadioGroup from '../../ui/RadioGroup';
 import Input from '../../ui/Input';
