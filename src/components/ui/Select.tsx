@@ -1,48 +1,31 @@
+// 파일: src/components/ui/Select.tsx
 import React from 'react';
-
-interface SelectOption {
-  value: string | number;
-  label: string;
-}
 
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
-  options: SelectOption[];
-  id?: string;
+  options: { value: string; label: string }[];
+  placeholder?: string;
 }
 
-const Select = ({ label, id, options, ...props }: SelectProps) => {
-  const selectId = id || (label ? label.toLowerCase().replace(/\s/g, '-') : undefined);
-
-  const selectStyle: React.CSSProperties = {
-    padding: '12px 15px',
-    border: '1px solid #ccc',
-    borderRadius: '8px',
-    width: '100%',
-    boxSizing: 'border-box',
-    fontSize: '1rem',
-    outline: 'none',
-    backgroundColor: 'white',
-    appearance: 'none', // Remove default arrow
-    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23666'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E")`,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'right 15px center',
-    backgroundSize: '1em',
-    transition: 'border-color 0.2s ease',
-  };
-
+export const Select: React.FC<SelectProps> = ({ label, options, placeholder, ...props }) => {
   return (
-    <div className="form-group">
-      {label && <label htmlFor={selectId}>{label}</label>}
-      <select id={selectId} style={selectStyle} {...props}>
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
+    <div className="w-full">
+      {label && <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>}
+      <div className="relative">
+        <select 
+          className="w-full h-12 px-4 border border-gray-200 rounded-lg appearance-none bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-gray-700"
+          {...props}
+          defaultValue=""
+        >
+          {placeholder && <option value="" disabled>{placeholder}</option>}
+          {options.map((opt) => (
+            <option key={opt.value} value={opt.value}>{opt.label}</option>
+          ))}
+        </select>
+        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+          ▼
+        </div>
+      </div>
     </div>
   );
 };
-
-export default Select;

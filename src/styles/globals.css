@@ -1,22 +1,20 @@
+/* 파일: src/styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-  --primary: #007bff;
-  --bg-gray: #f5f7fa;
-  --white: #ffffff;
-  --border: #e1e4e8;
+  --font-base: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
 }
 
 body {
-  margin: 0;
-  background-color: var(--bg-gray);
-  font-family: 'Pretendard', sans-serif;
+  font-family: var(--font-base);
+  background-color: #F9FAFB;
+  color: #111827;
 }
 
-.onboarding-layout {
-  width: 100%;
-  max-width: 1000px; /* PC 와이드 대응 */
-  margin: 40px auto;
-  background: var(--white);
-  padding: 60px;
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+/* Custom Reset additions if needed */
+input[type="date"],
+input[type="time"] {
+    -webkit-appearance: none;
 }

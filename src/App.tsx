@@ -1,14 +1,46 @@
+// 파일: src/App.tsx
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import OnboardingPage from './pages/OnboardingPage';
+import { Layout } from './components/ui/Layout';
+
+// Components
+import { RoleSelection } from './components/feature/Shared/RoleSelection';
+import { IntroSlide } from './components/feature/Shared/IntroSlide';
+import { CompletionSlide } from './components/feature/Shared/CompletionSlide';
+
+import { EmployerBasicInfo } from './components/feature/EmployerSteps/EmployerBasicInfo';
+import { EmployerConditions } from './components/feature/EmployerSteps/EmployerConditions';
+import { EmployerAdditional } from './components/feature/EmployerSteps/EmployerAdditional';
+
+import { SeekerBasicInfo } from './components/feature/SeekerSteps/SeekerBasicInfo';
+import { SeekerConsultation } from './components/feature/SeekerSteps/SeekerConsultation';
+
+import { ROUTE_PATHS } from './constants/routes';
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        {/* 접속 시 바로 온보딩 페이지로 이동 */}
-        <Route path="/" element={<Navigate to="/onboarding" replace />} />
-        <Route path="/onboarding" element={<OnboardingPage />} />
-      </Routes>
+      <Layout>
+        <Routes>
+          {/* 1. 홈 (역할 선택) */}
+          <Route path={ROUTE_PATHS.HOME} element={<RoleSelection />} />
+
+          {/* 2. 구인자(Employer) 플로우 */}
+          <Route path={ROUTE_PATHS.EMPLOYER.INTRO} element={<IntroSlide />} />
+          <Route path={ROUTE_PATHS.EMPLOYER.BASIC_INFO} element={<EmployerBasicInfo />} />
+          <Route path={ROUTE_PATHS.EMPLOYER.CONDITIONS} element={<EmployerConditions />} />
+          <Route path={ROUTE_PATHS.EMPLOYER.ADDITIONAL} element={<EmployerAdditional />} />
+          <Route path={ROUTE_PATHS.EMPLOYER.COMPLETE} element={<CompletionSlide />} />
+
+          {/* 3. 구직자(Seeker) 플로우 */}
+          <Route path={ROUTE_PATHS.SEEKER.INTRO} element={<IntroSlide />} />
+          <Route path={ROUTE_PATHS.SEEKER.BASIC_INFO} element={<SeekerBasicInfo />} />
+          <Route path={ROUTE_PATHS.SEEKER.CONSULTATION} element={<SeekerConsultation />} />
+          <Route path={ROUTE_PATHS.SEEKER.COMPLETE} element={<CompletionSlide />} />
+
+          {/* 4. 잘못된 경로 처리 */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Layout>
     </BrowserRouter>
   );
 }

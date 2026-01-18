@@ -1,5 +1,6 @@
+// 파일: src/store/store.ts
 import { configureStore } from '@reduxjs/toolkit';
-import onboardingReducer from './onboardingSlice';
+import onboardingReducer from './slices/onboardingSlice';
 
 export const store = configureStore({
   reducer: {
