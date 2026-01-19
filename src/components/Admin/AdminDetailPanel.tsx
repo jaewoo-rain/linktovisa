@@ -1,7 +1,5 @@
 import { Role } from "../../api/adminConsultation";
 import { formatDate, joinPhone } from "../../utils/adminFormat";
-import AdminJsonViewer from "./AdminJsonViewer";
-
 export default function AdminDetailPanel({
     role,
     selectedId,
@@ -81,10 +79,6 @@ export default function AdminDetailPanel({
                             </div>
                         )}
 
-                        <div>
-                            <div className="text-sm font-bold mb-2">Raw JSON</div>
-                            <AdminJsonViewer data={detail} />
-                        </div>
                     </div>
                 )}
             </div>
