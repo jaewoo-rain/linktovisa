@@ -102,7 +102,7 @@ export const EmployerBasicInfo = () => {
               />
             </div>
 
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 gap-3">
               <Input
                 placeholder="010"
                 className="text-center"

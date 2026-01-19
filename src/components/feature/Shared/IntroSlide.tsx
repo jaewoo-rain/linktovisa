@@ -23,11 +23,11 @@ export const IntroSlide = () => {
 
       <div className="flex-1 space-y-8">
         {data.steps.map((step: Step) => (
-          <div key={step.id} className="border-b border-gray-100 pb-6 last:border-0">
-            <h3 className="text-primary text-xl font-bold mb-2">
+          <div key={step.id} className="border-b-2 border-gray-200 pb-6 last:border-0">
+            <h3 className="text-primary text-xl sm:text-2xl font-bold mb-2">
               {step.id} <span className="text-gray-900 ml-2">{step.title}</span>
             </h3>
-            <p className="text-gray-500">{step.desc}</p>
+            <p className="text-gray-500 text-base sm:text-xl">{step.desc}</p>
           </div>
         ))}
       </div>

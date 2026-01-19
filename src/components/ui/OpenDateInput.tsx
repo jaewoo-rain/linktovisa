@@ -20,7 +20,7 @@ export default function OpenDateInput({ value, onChange, className = "" }: OpenD
                         type="number"
                         value={value.year}
                         onChange={(e) => onChange({ ...value, year: e.target.value })}
-                        className="w-full h-[72px] pl-4 pr-4 border border-gray-200 rounded-lg 
+                        className="w-full h-16 pl-4 pr-4 border border-gray-200 rounded-lg 
                        focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-center"
                         placeholder="2000"
                     />
@@ -39,7 +39,7 @@ export default function OpenDateInput({ value, onChange, className = "" }: OpenD
                         inputMode="numeric"
                         value={value.month}
                         onChange={(e) => onChange({ ...value, month: e.target.value })}
-                        className="w-full h-[72px] pl-4 pr-4 border border-gray-200 rounded-lg
+                        className="w-full h-16 pl-4 pr-4 border border-gray-200 rounded-lg
                        focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-center"
                         placeholder="12"
                     />
@@ -58,7 +58,7 @@ export default function OpenDateInput({ value, onChange, className = "" }: OpenD
                         inputMode="numeric"
                         value={value.day}
                         onChange={(e) => onChange({ ...value, day: e.target.value })}
-                        className="w-full h-[72px] pl-4 pr-4 border border-gray-200 rounded-lg
+                        className="w-full h-16 pl-4 pr-4 border border-gray-200 rounded-lg
                        focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-center"
                         placeholder="31"
                     />

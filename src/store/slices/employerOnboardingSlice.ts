@@ -59,8 +59,8 @@ const initialState: EmployerOnboardingState = {
     conditions: {
         task: null,
         workDays: [],
-        startTime: "09:00",
-        endTime: "18:00",
+        startTime: "",
+        endTime: "",
         jobTypes: [],
         salaryRaw: "",
     },

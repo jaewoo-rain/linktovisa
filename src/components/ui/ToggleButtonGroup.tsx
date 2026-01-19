@@ -67,7 +67,7 @@ export const ToggleButtonGroup: React.FC<ToggleButtonGroupProps> = ({
                         onClick={() => toggle(opt)}
                         aria-pressed={active}
                         className={`
-              h-20 rounded border text-sm
+              h-16 rounded border text-sm
               flex items-center justify-center
               transition-all whitespace-nowrap
               ${active

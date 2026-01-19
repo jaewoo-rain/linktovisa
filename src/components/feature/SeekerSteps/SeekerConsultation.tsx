@@ -1,5 +1,5 @@
 // 파일: src/components/feature/SeekerSteps/SeekerConsultation.tsx
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import ReactSelect from "react-select";
 import { useTranslation } from "react-i18next";
 
@@ -14,6 +14,7 @@ import { LANGUAGE_OPTIONS } from "../../../constants/languages";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { setCountry, setLang, setChannel } from "../../../store/slices/seekerOnboardingSlice";
 import { submitConsultation } from "../../../api/consultation";
+import { LoadingOverlay } from "../../ui/LoadingOverlay";
 
 type ChannelValue = "kakao" | "line" | "whatsapp";
 
@@ -34,6 +35,8 @@ export const SeekerConsultation = () => {
   const { handleNext } = useOnboarding();
   const { i18n } = useTranslation();
   const dispatch = useAppDispatch();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
 
   const consultation = useAppSelector((s) => s.seekerOnboarding.consultation);
   const onboardingAll = useAppSelector((s) => s.seekerOnboarding);
@@ -69,14 +72,20 @@ export const SeekerConsultation = () => {
   };
 
   const onSubmit = async () => {
+    if (isSubmitting) return; // 중복 클릭 방지
+
+    setIsSubmitting(true);
     try {
       console.log("전송 데이터:", onboardingAll);
 
-      await submitConsultation({ ...onboardingAll, role: "seeker" });
+      await submitConsultation({ ...onboardingAll, role: "employer" });
 
       handleNext();
     } catch (e) {
       console.error("상담 신청 실패", e);
+      alert("전송에 실패했어요. 잠시 후 다시 시도해주세요.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -89,6 +98,8 @@ export const SeekerConsultation = () => {
 
   return (
     <div>
+      <LoadingOverlay open={isSubmitting} text="상담 신청 중이에요..." />
+
       <StepSeeker currentStep={2} />
 
       <div className="bg-white p-4 rounded-lg space-y-6">
@@ -129,8 +140,13 @@ export const SeekerConsultation = () => {
           />
         </div>
 
-        <Button onClick={onSubmit} fullWidth className="bg-gray-400 mt-8">
-          상담 신청
+        <Button
+          onClick={onSubmit}
+          fullWidth
+          className={`bg-gray-400 ${isSubmitting ? "opacity-60 cursor-not-allowed" : ""}`}
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "전송 중..." : "채용 정보 입력 완료"}
         </Button>
       </div>
     </div>
