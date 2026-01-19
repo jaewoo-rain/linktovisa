@@ -255,14 +255,6 @@ export default function AdminDetailPanel({
                                         </div>
                                     </div>
                                 </div>
-
-                                {/* Raw */}
-                                <div className="pt-3 border-t">
-                                    <div className="font-bold mb-2">전체 데이터 (Raw)</div>
-                                    <pre className="text-xs bg-gray-50 border rounded-xl p-3 overflow-auto">
-                                        {JSON.stringify(detail, null, 2)}
-                                    </pre>
-                                </div>
                             </div>
                         )}
                     </div>
