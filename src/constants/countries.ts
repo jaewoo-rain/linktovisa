@@ -1,4 +1,3 @@
-// 파일: src/constants/countries.ts
 import countries from "i18n-iso-countries";
 
 import en from "i18n-iso-countries/langs/en.json";
@@ -12,12 +11,10 @@ import it from "i18n-iso-countries/langs/it.json";
 import pt from "i18n-iso-countries/langs/pt.json";
 import ru from "i18n-iso-countries/langs/ru.json";
 import ar from "i18n-iso-countries/langs/ar.json";
-
 import vi from "i18n-iso-countries/langs/vi.json";
 import th from "i18n-iso-countries/langs/th.json";
 import id from "i18n-iso-countries/langs/id.json";
 import tr from "i18n-iso-countries/langs/tr.json";
-
 import nl from "i18n-iso-countries/langs/nl.json";
 import pl from "i18n-iso-countries/langs/pl.json";
 import uk from "i18n-iso-countries/langs/uk.json";
@@ -27,18 +24,20 @@ export type CountryOption = { value: string; label: string };
 const SUPPORTED = new Set<string>();
 let registered = false;
 
+type LocaleJson = { locale: string; countries: Record<string, string> };
+
 function ensureRegistered() {
     if (registered) return;
 
-    const locales = [
+    const locales: LocaleJson[] = [
         en, ko, ja, zh, fr, de, es, it, pt, ru, ar,
         vi, th, id, tr,
         nl, pl, uk,
     ];
 
     for (const localeJson of locales) {
-        countries.registerLocale(localeJson);
-        if (localeJson?.lang) SUPPORTED.add(String(localeJson.lang).toLowerCase());
+        countries.registerLocale(localeJson as any);
+        SUPPORTED.add(localeJson.locale.toLowerCase());
     }
 
     SUPPORTED.add("en");
@@ -48,9 +47,6 @@ function ensureRegistered() {
 function normalizeLocale(appLang: string) {
     const raw = (appLang || "en").toLowerCase();
     const base = raw.split("-")[0];
-
-    if (base === "zh") return "zh";     // zh-CN/zh-TW -> zh
-    if (base === "pt") return "pt";     // pt-BR -> pt
     return base || "en";
 }
 

@@ -1,5 +1,3 @@
-import React from "react";
-
 export type OpenDateValue = {
     year: string;
     month: string;
