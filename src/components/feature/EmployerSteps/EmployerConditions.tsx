@@ -13,11 +13,11 @@ type Weekday = "월" | "화" | "수" | "목" | "금" | "토" | "일" | "변동";
 export const EmployerConditions = () => {
   const { handleNext } = useOnboarding();
   const [workDays, setWorkDays] = useState<Weekday[]>([]);
-  const handleSubmit = () => {
-    console.log("선택된 요일:", workDays);
-    // API payload로 그대로 보내면 됨
-    // ex) { work_days: ["월", "수", "금"] }
-  };
+  // const handleSubmit = () => {
+  //   console.log("선택된 요일:", workDays);
+  //   // API payload로 그대로 보내면 됨
+  //   // ex) { work_days: ["월", "수", "금"] }
+  // };
 
   return (
     <div>
