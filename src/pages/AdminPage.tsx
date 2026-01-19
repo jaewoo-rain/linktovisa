@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { fetchConsultationDetail, fetchConsultationList, Role } from "../api/adminConsultation";
+import AdminHeader from "../components/Admin/AdminHeader";
+import AdminPagination from "../components/Admin/AdminPagination";
+import AdminTable from "../components/Admin/AdminTable";
+import AdminDetailPanel from "../components/Admin/AdminDetailPanel";
 
-import AdminHeader from "../components/admin/AdminHeader";
-import AdminPagination from "../components/admin/AdminPagination";
-import AdminTable from "../components/admin/AdminTable";
-import AdminDetailPanel from "../components/admin/AdminDetailPanel";
 
 export default function AdminPage() {
     const [role, setRole] = useState<Role>("employer");
