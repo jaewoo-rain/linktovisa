@@ -1,5 +1,4 @@
 // 파일: src/components/feature/EmployerSteps/EmployerAdditional.tsx
-import { SectionTitle } from '../../ui/SectionTitle';
 import { Input } from '../../ui/Input';
 import { Button } from '../../ui/Button';
 import { useOnboarding } from '../../../hooks/useOnboarding';

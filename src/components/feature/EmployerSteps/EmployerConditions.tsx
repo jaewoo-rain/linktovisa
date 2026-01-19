@@ -1,7 +1,5 @@
 // 파일: src/components/feature/EmployerSteps/EmployerConditions.tsx
-import { SectionTitle } from '../../ui/SectionTitle';
 import { Checkbox } from '../../ui/Checkbox';
-import { Input } from '../../ui/Input';
 import { Select } from '../../ui/Select';
 import { Button } from '../../ui/Button';
 import { useOnboarding } from '../../../hooks/useOnboarding';
