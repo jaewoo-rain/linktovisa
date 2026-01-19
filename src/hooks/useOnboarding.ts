@@ -1,8 +1,10 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAppDispatch } from "../store/hooks";
 import { setUserFlow } from "../store/slices/onboardingSlice";
-import type { UserFlow } from "../constants/slides";
 import { ROUTE_PATHS, EMPLOYER_FLOW, SEEKER_FLOW } from "../constants/routes";
+import type { UserFlow } from "../constants/slides";
+
+type Flow = Exclude<UserFlow, null>; // ✅ "employer" | "seeker"
 
 export const useOnboarding = () => {
   const navigate = useNavigate();
@@ -11,18 +13,17 @@ export const useOnboarding = () => {
 
   const currentPath = location.pathname;
   const isEmployerFlow = currentPath.startsWith("/employer");
-  const currentFlowPaths = isEmployerFlow ? EMPLOYER_FLOW : SEEKER_FLOW;
+
+  const currentFlowPaths: readonly string[] =
+    isEmployerFlow ? EMPLOYER_FLOW : SEEKER_FLOW;
+
   const currentIndex = currentFlowPaths.indexOf(currentPath);
 
-  // 홈에서 역할 선택 시만 Redux에 저장
-  const handleSelectRole = (role: UserFlow) => {
-    dispatch(setUserFlow(role));
+  const handleSelectRole = (role: Flow) => {
+    dispatch(setUserFlow(role)); // ✅ as any 제거
 
-    if (role === "employer") {
-      navigate(ROUTE_PATHS.EMPLOYER.INTRO);
-    } else {
-      navigate(ROUTE_PATHS.SEEKER.INTRO);
-    }
+    if (role === "employer") navigate(ROUTE_PATHS.EMPLOYER.INTRO);
+    else navigate(ROUTE_PATHS.SEEKER.INTRO);
   };
 
   const handleNext = () => {
@@ -43,7 +44,7 @@ export const useOnboarding = () => {
   };
 
   return {
-    userFlow: (isEmployerFlow ? "employer" : "seeker") as UserFlow,
+    userFlow: (isEmployerFlow ? "employer" : "seeker") as Flow,
     handleSelectRole,
     handleNext,
     handlePrev,

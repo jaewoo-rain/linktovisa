@@ -24,20 +24,36 @@ export type CountryOption = { value: string; label: string };
 const SUPPORTED = new Set<string>();
 let registered = false;
 
-type LocaleJson = { locale: string; countries: Record<string, string> };
+// ✅ locale만 있으면 충분 (countries 값 타입이 locale별로 string|string[] 섞여서 엄격타입 금지)
+type LocaleJson = { locale: string; countries: Record<string, any> };
 
 function ensureRegistered() {
     if (registered) return;
 
     const locales: LocaleJson[] = [
-        en, ko, ja, zh, fr, de, es, it, pt, ru, ar,
-        vi, th, id, tr,
-        nl, pl, uk,
+        en as any,
+        ko as any,
+        ja as any,
+        zh as any,
+        fr as any,
+        de as any,
+        es as any,
+        it as any,
+        pt as any,
+        ru as any,
+        ar as any,
+        vi as any,
+        th as any,
+        id as any,
+        tr as any,
+        nl as any,
+        pl as any,
+        uk as any,
     ];
 
     for (const localeJson of locales) {
         countries.registerLocale(localeJson as any);
-        SUPPORTED.add(localeJson.locale.toLowerCase());
+        SUPPORTED.add(String(localeJson.locale).toLowerCase());
     }
 
     SUPPORTED.add("en");
@@ -46,8 +62,7 @@ function ensureRegistered() {
 
 function normalizeLocale(appLang: string) {
     const raw = (appLang || "en").toLowerCase();
-    const base = raw.split("-")[0];
-    return base || "en";
+    return raw.split("-")[0] || "en"; // en-US -> en
 }
 
 export function getCountryOptions(appLanguage: string): CountryOption[] {
