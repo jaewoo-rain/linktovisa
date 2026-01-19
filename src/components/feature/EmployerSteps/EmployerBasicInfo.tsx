@@ -1,13 +1,34 @@
 // 파일: src/components/feature/EmployerSteps/EmployerBasicInfo.tsx
-import { SectionTitle } from '../../ui/SectionTitle';
 import { Input } from '../../ui/Input';
-import { Select } from '../../ui/Select';
 import { Button } from '../../ui/Button';
 import { useOnboarding } from '../../../hooks/useOnboarding';
 import StepIndicator from '../../ui/StepIndicator';
+import { useState } from 'react';
+import OpenDateInput, { OpenDateValue } from '../../ui/OpenDateInput';
+import Label from '../../ui/Label';
 
 export const EmployerBasicInfo = () => {
   const { handleNext } = useOnboarding();
+  const [openDate, setOpenDate] = useState<OpenDateValue>({
+    year: "",
+    month: "",
+    day: "",
+  })
+
+  const handleSubmit = () => {
+    console.log(openDate); // ✅ 여기서 year/month/day 다 꺼낼 수 있음
+    // 예: YYYY-MM-DD 만들기
+    const y = openDate.year;
+    const m = openDate.month.padStart(2, "0");
+    const d = openDate.day.padStart(2, "0");
+    const dateString = `${y}-${m}-${d}`;
+    console.log(dateString);
+  };
+
+  const onNext = () => {
+    handleSubmit(); // 데이터 처리
+    handleNext();   // 다음 스텝 이동
+  };
 
   return (
     <div className=''>
@@ -21,13 +42,11 @@ export const EmployerBasicInfo = () => {
         </div>
 
         <div>
-          <label className="block text-base font-bold text-gray-700 mb-1">개업 연월일 입력</label>
-          <div className="grid grid-cols-3 gap-2">
-            <Select options={[{ value: '2000', label: '2000' }]} placeholder="2000" />
-            <Select options={[{ value: '12', label: '12' }]} placeholder="12" />
-            <Select options={[{ value: '31', label: '31' }]} placeholder="31" />
-          </div>
+          <Label>개업 연월일 입력</Label>
+          <OpenDateInput value={openDate} onChange={setOpenDate} />
         </div>
+
+
 
         <Input label="사업자 등록번호" placeholder="사업자 등록번호" />
 
@@ -48,8 +67,8 @@ export const EmployerBasicInfo = () => {
           </div>
         </div>
 
-        <Button onClick={handleNext} fullWidth className="bg-gray-400 hover:bg-gray-500 text-white mt-8">다음으로</Button>
+        <Button onClick={onNext} fullWidth className="bg-gray-400 hover:bg-gray-500 text-white mt-8">다음으로</Button>
       </div>
-    </div>
+    </div >
   );
 };
