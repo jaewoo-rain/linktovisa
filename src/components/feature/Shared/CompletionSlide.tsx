@@ -1,5 +1,4 @@
 // 파일: src/components/feature/Shared/CompletionSlide.tsx
-import { Layout } from 'lucide-react';
 import { useOnboarding } from '../../../hooks/useOnboarding';
 import { Button } from '../../ui/Button';
 
