@@ -4,23 +4,14 @@ import { Input } from '../../ui/Input';
 import { Select } from '../../ui/Select';
 import { Button } from '../../ui/Button';
 import { useOnboarding } from '../../../hooks/useOnboarding';
+import StepIndicator from '../../ui/StepIndicator';
 
 export const EmployerBasicInfo = () => {
   const { handleNext } = useOnboarding();
 
   return (
     <div className=''>
-      <div className="flex gap-4 mb-4 font-medium text-gray-400 justify-center gap-12">
-        <span className="text-primary ">● STEP 1<br />
-          <strong className=' text-[25px]'>업체 정보 입력</strong>
-        </span>
-        <span>● STEP 2<br />
-          <strong className=' text-[25px]'>근무 조건 입력</strong>
-        </span>
-        <span>● STEP 3<br />
-          <strong className=' text-[25px]'>추가 사항 입력</strong>
-        </span>
-      </div>
+      <StepIndicator currentStep={1} />
       {/* <SectionTitle title="업체 정보 입력" /> */}
 
       <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-6">
