@@ -28,27 +28,49 @@ export default function AdminDetailPanel({
                 ) : (
                     <div className="space-y-4">
                         {role === "employer" ? (
-                            <div className="space-y-2">
-                                <div className="text-lg font-extrabold">{detail?.basicInfo?.companyName || "-"}</div>
-                                <div className="text-sm text-gray-600">
-                                    대표: {detail?.basicInfo?.ceoName || "-"} / 사업자번호:{" "}
-                                    {detail?.basicInfo?.bizRegNumber || "-"}
+                            <div className="space-y-4">
+                                {/* Basic */}
+                                <div className="space-y-2">
+                                    <div className="text-lg font-extrabold">{detail?.basicInfo?.companyName || "-"}</div>
+                                    <div className="text-sm text-gray-600">
+                                        대표: {detail?.basicInfo?.ceoName || "-"} / 사업자번호: {detail?.basicInfo?.bizRegNumber || "-"}
+                                    </div>
+                                    <div className="text-sm text-gray-600">
+                                        담당자: {detail?.basicInfo?.managerName || "-"} /{" "}
+                                        {detail?.basicInfo?.managerEmailId && detail?.basicInfo?.managerEmailDomain
+                                            ? `${detail.basicInfo.managerEmailId}@${detail.basicInfo.managerEmailDomain}`
+                                            : "-"}
+                                    </div>
+                                    <div className="text-sm text-gray-600">
+                                        연락처: {joinPhone([detail?.basicInfo?.phone1, detail?.basicInfo?.phone2, detail?.basicInfo?.phone3])}
+                                    </div>
+                                    <div className="text-sm text-gray-600">신청일: {formatDate(detail?.createdAt)}</div>
                                 </div>
-                                <div className="text-sm text-gray-600">
-                                    담당자: {detail?.basicInfo?.managerName || "-"} /{" "}
-                                    {detail?.basicInfo?.managerEmailId && detail?.basicInfo?.managerEmailDomain
-                                        ? `${detail.basicInfo.managerEmailId}@${detail.basicInfo.managerEmailDomain}`
-                                        : "-"}
+
+                                {/* Conditions */}
+                                <div className="pt-3 border-t">
+                                    <div className="font-bold mb-2">근무 조건</div>
+                                    <div className="text-sm text-gray-700 space-y-1">
+                                        <div>담당 업무: {detail?.conditions?.task || "-"}</div>
+                                        <div>근무 요일: {(detail?.conditions?.workDays || []).join(", ") || "-"}</div>
+                                        <div>
+                                            근무 시간: {detail?.conditions?.startTime || "-"} ~ {detail?.conditions?.endTime || "-"}
+                                        </div>
+                                        <div>근무 형태: {(detail?.conditions?.jobTypes || []).join(", ") || "-"}</div>
+                                        <div>급여(원): {detail?.conditions?.salaryRaw || "-"}</div>
+                                    </div>
                                 </div>
-                                <div className="text-sm text-gray-600">
-                                    연락처:{" "}
-                                    {joinPhone([
-                                        detail?.basicInfo?.phone1,
-                                        detail?.basicInfo?.phone2,
-                                        detail?.basicInfo?.phone3,
-                                    ])}
+
+                                {/* Additional */}
+                                <div className="pt-3 border-t">
+                                    <div className="font-bold mb-2">추가 정보</div>
+                                    <div className="text-sm text-gray-700 space-y-1">
+                                        <div>경력: {(detail?.additional?.careers || []).join(", ") || "-"}</div>
+                                        <div>복지/혜택: {(detail?.additional?.welfares || []).join(", ") || "-"}</div>
+                                        <div>한국어 수준: {(detail?.additional?.koreanLevels || []).join(", ") || "-"}</div>
+                                        <div>우대조건: {detail?.additional?.preference || "-"}</div>
+                                    </div>
                                 </div>
-                                <div className="text-sm text-gray-600">신청일: {formatDate(detail?.createdAt)}</div>
                             </div>
                         ) : (
                             <div className="space-y-2">

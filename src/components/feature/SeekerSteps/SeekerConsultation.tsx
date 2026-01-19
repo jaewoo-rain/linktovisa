@@ -38,7 +38,7 @@ export const SeekerConsultation = () => {
   const { i18n } = useTranslation();
   const dispatch = useAppDispatch();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
 
   const consultation = useAppSelector((s) => s.seekerOnboarding.consultation);
   const onboardingAll = useAppSelector((s) => s.seekerOnboarding);
@@ -80,11 +80,11 @@ export const SeekerConsultation = () => {
     try {
       console.log("전송 데이터:", onboardingAll);
 
-      await submitConsultation({ ...onboardingAll, role: "employer" });
+      await submitConsultation({ ...onboardingAll, role: "seeker" });
 
       dispatch(resetEmployerOnboarding());
       dispatch(resetSeekerOnboarding());
-      
+
       handleNext();
     } catch (e) {
       console.error("상담 신청 실패", e);
