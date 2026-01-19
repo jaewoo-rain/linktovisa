@@ -24,13 +24,11 @@ export const CompletionSlide = () => {
         <Button fullWidth>{isEmployer ? "완료" : "상담 채널 입장하기"}</Button>
         {!isEmployer && <Button fullWidth variant="ghost">홈으로</Button>}
       </div>\
-      asdasd
       <img
         src="/images/bg-blur.png"
         alt=""
         className="absolute bottom-0 left-0 w-full h-auto z-0 pointer-events-none"
       />
-      asdasd
     </div>
   );
 };

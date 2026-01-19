@@ -9,15 +9,19 @@ export const Header = () => {
       onClick={() => navigate("/")}
     >
       <div className="max-w-[800px] w-full h-full mx-auto flex items-center justify-between px-4 md:px-6">
-        <div className="text-primary font-bold text-xl md:text-2xl">
+        <div className="text-primary font-bold text-2xl">
           LINKOTOVISA
         </div>
 
-        <div className="flex gap-2">
-          <Button variant="outline" className="text-xs h-8 px-3">
+        <div className="flex gap-3 pr-3">
+          <img
+            src='/images/icon-translation.png'
+            alt='번역'
+          />
+          <Button variant="outline" className="text-xs h-8 px-3 hidden md:block">
             문의하기
           </Button>
-          <Button variant="primary" className="text-xs h-8 px-3">
+          <Button variant="primary" className="text-xs h-8 px-3 hidden md:block">
             무료로 시작하기
           </Button>
         </div>
