@@ -9,15 +9,12 @@ const DAYS: Weekday[] = ["월", "화", "수", "목", "금", "토", "일", "변�
 
 export default function WeekdaySelector({ value, onChange }: WeekdaySelectorProps) {
     const toggleDay = (day: Weekday) => {
-        if (value.includes(day)) {
-            onChange(value.filter((d) => d !== day));
-        } else {
-            onChange([...value, day]);
-        }
+        if (value.includes(day)) onChange(value.filter((d) => d !== day));
+        else onChange([...value, day]);
     };
 
     return (
-        <div className="flex gap-2">
+        <div className="grid grid-cols-7 md:grid-cols-8 gap-2">
             {DAYS.map((d) => {
                 const isSelected = value.includes(d);
 
@@ -27,12 +24,13 @@ export default function WeekdaySelector({ value, onChange }: WeekdaySelectorProp
                         type="button"
                         onClick={() => toggleDay(d)}
                         className={`
-              flex-1 h-10 rounded border
+              h-10 rounded border
               flex items-center justify-center
+              text-sm whitespace-nowrap
               transition-all
               ${isSelected
-                                ? "bg-primary text-white border-primary"
-                                : "bg-white text-gray-700 hover:bg-gray-100"}
+                                ? "bg-[#111111] text-white border-[#111111]"
+                                : "bg-white text-gray-700 border-gray-200 hover:bg-gray-100"}
             `}
                     >
                         {d}

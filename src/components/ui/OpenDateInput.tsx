@@ -20,11 +20,11 @@ export default function OpenDateInput({ value, onChange, className = "" }: OpenD
                         type="number"
                         value={value.year}
                         onChange={(e) => onChange({ ...value, year: e.target.value })}
-                        className="w-full h-12 pl-4 pr-10 border border-gray-200 rounded-lg
-                       focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                        className="w-full h-[72px] pl-4 pr-4 border border-gray-200 rounded-lg 
+                       focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-center"
                         placeholder="2000"
                     />
-                    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm pointer-events-none">
+                    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm pointer-events-none hidden sm:block">
                         년
                     </span>
                 </div>
@@ -39,11 +39,11 @@ export default function OpenDateInput({ value, onChange, className = "" }: OpenD
                         inputMode="numeric"
                         value={value.month}
                         onChange={(e) => onChange({ ...value, month: e.target.value })}
-                        className="w-full h-12 pl-4 pr-10 border border-gray-200 rounded-lg
-                       focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                        className="w-full h-[72px] pl-4 pr-4 border border-gray-200 rounded-lg
+                       focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-center"
                         placeholder="12"
                     />
-                    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm pointer-events-none">
+                    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm pointer-events-none hidden sm:block">
                         월
                     </span>
                 </div>
@@ -58,11 +58,11 @@ export default function OpenDateInput({ value, onChange, className = "" }: OpenD
                         inputMode="numeric"
                         value={value.day}
                         onChange={(e) => onChange({ ...value, day: e.target.value })}
-                        className="w-full h-12 pl-4 pr-10 border border-gray-200 rounded-lg
-                       focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                        className="w-full h-[72px] pl-4 pr-4 border border-gray-200 rounded-lg
+                       focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-center"
                         placeholder="31"
                     />
-                    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm pointer-events-none">
+                    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm pointer-events-none hidden sm:block">
                         일
                     </span>
                 </div>
