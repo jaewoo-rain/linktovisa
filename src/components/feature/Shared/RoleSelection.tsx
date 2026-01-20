@@ -7,7 +7,7 @@ export const RoleSelection = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col items-center w-full">
+    <div className="flex flex-col items-center w-full sm:mt-24">
       <h1 className="text-2xl font-bold mb-10 text-center">
         원하시는 서비스를 선택해주세요
       </h1>

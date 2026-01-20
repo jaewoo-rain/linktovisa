@@ -16,6 +16,7 @@ import { SeekerConsultation } from './components/feature/SeekerSteps/SeekerConsu
 
 import { ROUTE_PATHS } from './constants/routes';
 import AdminPage from './pages/AdminPage';
+import { InitSlide } from './components/feature/Shared/InitSlide';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Layout>
         <Routes>
           {/* 1. 홈 (역할 선택) */}
+          <Route path={ROUTE_PATHS.INIT} element={<InitSlide />} />
           <Route path={ROUTE_PATHS.HOME} element={<RoleSelection />} />
 
           {/* 2. 구인자(Employer) 플로우 */}

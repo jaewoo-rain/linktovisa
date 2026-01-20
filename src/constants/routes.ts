@@ -1,7 +1,8 @@
 // 파일: src/constants/routes.ts
 
 export const ROUTE_PATHS = {
-  HOME: '/',
+  INIT: '/',
+  HOME: '/init',
   // 구인자(Employer) 경로
   EMPLOYER: {
     INTRO: '/employer/intro',
