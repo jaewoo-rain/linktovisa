@@ -14,6 +14,7 @@ import { LANGUAGE_OPTIONS } from "../../../constants/languages";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { setCountry, setLang, setChannel } from "../../../store/slices/seekerOnboardingSlice";
 import { LoadingOverlay } from "../../ui/LoadingOverlay";
+import { submitConsultation } from "../../../api/consultation";
 
 type ChannelValue = "kakao" | "line" | "whatsapp";
 
@@ -77,7 +78,7 @@ export const SeekerConsultation = () => {
     try {
       console.log("전송 데이터:", onboardingAll);
 
-      // await submitConsultation({ ...onboardingAll, role: "seeker" });
+      await submitConsultation({ ...onboardingAll, role: "seeker" });
 
       handleNext();
     } catch (e) {
