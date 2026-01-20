@@ -13,10 +13,7 @@ import { LANGUAGE_OPTIONS } from "../../../constants/languages";
 
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { setCountry, setLang, setChannel } from "../../../store/slices/seekerOnboardingSlice";
-import { submitConsultation } from "../../../api/consultation";
 import { LoadingOverlay } from "../../ui/LoadingOverlay";
-import { resetSeekerOnboarding } from "../../../store/slices/seekerOnboardingSlice";
-import { resetEmployerOnboarding } from "../../../store/slices/employerOnboardingSlice";
 
 type ChannelValue = "kakao" | "line" | "whatsapp";
 
