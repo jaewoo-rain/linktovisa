@@ -69,7 +69,7 @@ export const ToggleButtonGroup: React.FC<ToggleButtonGroupProps> = ({
                         className={`
               h-16 rounded border text-sm
               flex items-center justify-center
-              transition-all whitespace-nowrap
+              transition-all break-words
               ${active
                                 ? "bg-[#111111] text-white border-[#111111]"
                                 : "bg-white text-gray-700 border-gray-200 hover:bg-gray-100"

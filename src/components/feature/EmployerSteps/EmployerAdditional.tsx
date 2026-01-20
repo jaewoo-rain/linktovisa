@@ -19,7 +19,7 @@ import {
 } from "../../../store/slices/employerOnboardingSlice";
 import { useState } from "react";
 
-const CAREER_OPTIONS = ["신입", "경력자", "신입/경력자"];
+const CAREER_OPTIONS = ["신입", "경력자", "신입,경력자"];
 const WELFARE_OPTIONS = ["기숙사 제공", "식사 제공", "통근 버스"];
 const KOREAN_LEVEL_OPTIONS = ["상", "중", "하"];
 

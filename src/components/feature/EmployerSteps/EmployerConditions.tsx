@@ -103,8 +103,10 @@ export const EmployerConditions = () => {
         </div>
 
         <div>
+
           <Label>근무 시간</Label>
-          <div className="grid grid-cols-3 gap-2 items-center">
+
+          <div className="grid grid-cols-2 gap-2 items-center pb-3">
             <Select
               placeholder="업무 시작 시간"
               options={timeOptions}
@@ -117,10 +119,11 @@ export const EmployerConditions = () => {
               value={conditions.endTime}
               onChange={(e) => dispatch(setEndTime(e.target.value))}
             />
-            <div className="flex items-center justify-center h-12 rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-700">
-              {totalText}
-            </div>
           </div>
+          <div className="flex items-center justify-center h-12 rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-700">
+            {totalText}
+          </div>
+
 
           {timeToMinutes(conditions.endTime) < timeToMinutes(conditions.startTime) && (
             <p className="text-xs mt-2 text-red-500">

@@ -36,7 +36,7 @@ export default function StepSeeker({
                                 {/* 라벨 */}
                                 <div
                                     className={[
-                                        "mt-3 text-center text-sm font-semibold leading-snug whitespace-nowrap",
+                                        "mt-3 text-center text-sm font-semibold leading-snug break-words",
                                         isActive ? "text-primary" : "text-gray-400",
                                     ].join(" ")}
                                 >

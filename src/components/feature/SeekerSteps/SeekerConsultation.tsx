@@ -28,9 +28,9 @@ type ChannelOption = {
 };
 
 const CHANNEL_OPTIONS: ChannelOption[] = [
-  { label: "KAKAOTALK", value: "kakao", imgSrc: "/images/kakao.png", link: "https://example.com/kakao" },
-  { label: "LINE", value: "line", imgSrc: "/images/line.png", link: "https://example.com/line" },
-  { label: "WHATSAPP", value: "whatsapp", imgSrc: "/images/whatsapp.png", link: "https://example.com/whatsapp" },
+  { label: "KAKAOTALK", value: "kakao", imgSrc: "/images/kakao.png", link: "https://open.kakao.com/o/s0oFCgci" },
+  { label: "LINE", value: "line", imgSrc: "/images/line.png", link: "https://lin.ee/wy44api" },
+  { label: "WHATSAPP", value: "whatsapp", imgSrc: "/images/whatsapp.png", link: "https://wa.me/message/OK4UCDWWLQAPO1" },
 ];
 
 export const SeekerConsultation = () => {
@@ -80,10 +80,7 @@ export const SeekerConsultation = () => {
     try {
       console.log("전송 데이터:", onboardingAll);
 
-      await submitConsultation({ ...onboardingAll, role: "seeker" });
-
-      dispatch(resetEmployerOnboarding());
-      dispatch(resetSeekerOnboarding());
+      // await submitConsultation({ ...onboardingAll, role: "seeker" });
 
       handleNext();
     } catch (e) {

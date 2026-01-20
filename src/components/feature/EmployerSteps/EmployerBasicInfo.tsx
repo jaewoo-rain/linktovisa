@@ -34,15 +34,17 @@ export const EmployerBasicInfo = () => {
       <StepEmployer currentStep={1} />
 
       <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-6">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-x-3">
+          <Label>회사명</Label>
+          <Label>대표자명</Label>
           <Input
-            label="회사명"
+            // label="회사명"
             placeholder="회사명"
             value={basic.companyName}
             onChange={(e) => dispatch(setCompanyName(e.target.value))}
           />
           <Input
-            label="대표자명"
+            // label="대표자명"
             placeholder="대표자명"
             value={basic.ceoName}
             onChange={(e) => dispatch(setCeoName(e.target.value))}
@@ -60,6 +62,7 @@ export const EmployerBasicInfo = () => {
         <Input
           label="사업자 등록번호"
           placeholder="사업자 등록번호"
+          inputMode="numeric"
           value={basic.bizRegNumber}
           onChange={(e) => dispatch(setBizRegNumber(e.target.value))}
         />
@@ -94,18 +97,21 @@ export const EmployerBasicInfo = () => {
 
             <div className="grid grid-cols-3 gap-3">
               <Input
+                inputMode="numeric"
                 placeholder="010"
                 className="text-center"
                 value={basic.phone1}
                 onChange={(e) => dispatch(setPhone1(e.target.value))}
               />
               <Input
+                inputMode="numeric"
                 placeholder="1234"
                 className="text-center"
                 value={basic.phone2}
                 onChange={(e) => dispatch(setPhone2(e.target.value))}
               />
               <Input
+                inputMode="numeric"
                 placeholder="5678"
                 className="text-center"
                 value={basic.phone3}

@@ -14,7 +14,7 @@ export default function WeekdaySelector({ value, onChange }: WeekdaySelectorProp
     };
 
     return (
-        <div className="grid grid-cols-7 md:grid-cols-8 gap-2">
+        <div className="grid grid-cols-3 md:grid-cols-8 gap-2">
             {DAYS.map((d) => {
                 const isSelected = value.includes(d);
 

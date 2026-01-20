@@ -19,7 +19,7 @@ export const ROUTE_PATHS = {
     COMPLETE: '/seeker/complete',
   },
   ADMIN: {
-    MAIN: '/admin/linkotovisa'
+    MAIN: '/admin/linktovisa'
   }
 } as const;
 
