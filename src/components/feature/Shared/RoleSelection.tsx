@@ -1,10 +1,10 @@
 // 파일: src/components/feature/Shared/RoleSelection.tsx
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useOnboarding } from '../../../hooks/useOnboarding';
 import { Card } from '../../ui/Card';
 export const RoleSelection = () => {
   const { handleSelectRole } = useOnboarding();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <div className="flex flex-col items-center w-full sm:mt-24">
@@ -42,7 +42,9 @@ export const RoleSelection = () => {
         </div>
       </div>
 
-      {/* <button onClick={() => navigate("/admin/linktovisa")}>--</button> */}
+      <div className='cursor-default' onClick={() => navigate("/admin/linktovisa")}>
+        |
+      </div>
     </div>
   );
 };
