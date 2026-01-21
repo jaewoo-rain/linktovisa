@@ -38,37 +38,48 @@ export const CompletionSlide = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-full min-h-[50vh] mt-40">
-      <div className="w-full max-w-[600px] px-6 text-center">
-        <h2 className="text-[21px] sm:text-[30px] font-bold mb-4 leading-normal">
-          {isEmployer ? (
-            <>
-              적합한 지원자를 찾아
-              <br />
-              담당자님의 연락처로 연락드릴게요
-            </>
-          ) : (
-            "지금 바로 AI와 상담을 진행해보세요"
-          )}
-        </h2>
+    <div className="relative h-[90dvh] overflow-hidden">
+      {/* 콘텐츠 */}
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 h-full">
+        <div className="w-full max-w-[600px] -translate-y-10">
+          <h2 className="text-[21px] sm:text-[30px] font-bold mb-4 leading-normal">
+            {isEmployer ? (
+              <>
+                적합한 지원자를 찾아
+                <br />
+                담당자님의 연락처로 연락드릴게요
+              </>
+            ) : (
+              "지금 바로 AI와 상담을 진행해보세요"
+            )}
+          </h2>
 
-        <div className="mt-20 space-y-3">
-          <Button
-            className="w-full"
-            onClick={() => {
-              if (isEmployer) navigate("/");
-              else handleEnterChannel(); // 선택한 링크 열기
-            }}
-          >
-            {isEmployer ? "완료" : "상담 채널 입장하기"}
-          </Button>
+          <div className="mt-16 space-y-3">
+            <Button
+              className="w-full"
+              onClick={() => {
+                if (isEmployer) navigate("/");
+                else handleEnterChannel();
+              }}
+            >
+              {isEmployer ? "완료" : "상담 채널 입장하기"}
+            </Button>
+          </div>
         </div>
       </div>
 
+      {/* 하단 배경 */}
       <img
         src="/images/bg-bt-all.png"
         alt=""
-        className="pointer-events-none w-full h-[300px] object-cover mt-32 sm:mt-60"
+        className="
+      pointer-events-none
+      absolute bottom-0 left-0
+      w-full
+      h-[280px] sm:h-[340px]
+      object-cover
+      translate-y-1/3
+    "
       />
     </div>
   );
