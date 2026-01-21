@@ -73,12 +73,12 @@ export const CompletionSlide = () => {
         src="/images/bg-bt-all.png"
         alt=""
         className="
-      pointer-events-none
-      absolute bottom-0 left-0
-      w-full
-      h-[280px] sm:h-[340px]
-      object-cover
-      translate-y-1/3
+          pointer-events-none
+          absolute bottom-0 left-0
+          w-full
+          h-[280px] sm:h-[340px]
+          object-cover
+          translate-y-1/3
     "
       />
     </div>
