@@ -7,7 +7,7 @@ export const Header = () => {
   const navigate = useNavigate();
   const [openTranslate, setOpenTranslate] = useState(false);
 
-  const changeLanguage = (lang: string) => {
+  const changeLanguage = () => {
     const select = document.querySelector(
       ".goog-te-combo"
     ) as HTMLSelectElement | null;
@@ -18,7 +18,7 @@ export const Header = () => {
     }
 
     if (!openTranslate) {
-      // ✅ 번역 ON (영어)
+      // ✅ 기본 번역 ON (영어)
       select.value = "en";
       select.dispatchEvent(new Event("change"));
     } else {
@@ -63,7 +63,7 @@ export const Header = () => {
               src="/images/icon-translation.png"
               alt="번역"
               className="cursor-pointer w-6 h-6"
-              onClick={() => changeLanguage("en")}
+              onClick={() => changeLanguage()}
             />
 
             <Button
