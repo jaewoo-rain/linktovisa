@@ -47,14 +47,6 @@ export const RoleSelection = () => {
             />
           </div>
         </div>
-
-        {/* 관리자 진입 */}
-        <div
-          className="mt-6 cursor-default text-gray-300"
-          onClick={() => navigate("/admin/linktovisa")}
-        >
-          |
-        </div>
       </div>
     </div>
   );
