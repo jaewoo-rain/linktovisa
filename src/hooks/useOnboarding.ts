@@ -4,7 +4,7 @@ import { setUserFlow } from "../store/slices/onboardingSlice";
 import { ROUTE_PATHS, EMPLOYER_FLOW, SEEKER_FLOW } from "../constants/routes";
 import type { UserFlow } from "../constants/slides";
 
-type Flow = Exclude<UserFlow, null>; // ✅ "employer" | "seeker"
+type Flow = Exclude<UserFlow, null>; // "employer" | "seeker"
 
 export const useOnboarding = () => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ export const useOnboarding = () => {
   const currentIndex = currentFlowPaths.indexOf(currentPath);
 
   const handleSelectRole = (role: Flow) => {
-    dispatch(setUserFlow(role)); // ✅ as any 제거
+    dispatch(setUserFlow(role)); // as any 제거
 
     if (role === "employer") navigate(ROUTE_PATHS.EMPLOYER.INTRO);
     else navigate(ROUTE_PATHS.SEEKER.INTRO);

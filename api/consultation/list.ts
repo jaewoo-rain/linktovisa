@@ -28,7 +28,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
         const q = ((req.query.q as string) || "").trim();
 
-        // ✅ 간단 검색(없으면 전체)
         const filter =
             q.length > 0
                 ? {

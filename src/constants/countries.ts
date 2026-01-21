@@ -24,7 +24,7 @@ export type CountryOption = { value: string; label: string };
 const SUPPORTED = new Set<string>();
 let registered = false;
 
-// ✅ locale만 있으면 충분 (countries 값 타입이 locale별로 string|string[] 섞여서 엄격타입 금지)
+// locale만 있으면 충분 (countries 값 타입이 locale별로 string|string[] 섞여서 엄격타입 금지)
 type LocaleJson = { locale: string; countries: Record<string, any> };
 
 function ensureRegistered() {

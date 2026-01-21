@@ -8,8 +8,8 @@ type ToggleButtonGroupProps = {
     value: string[]; // 선택된 값들(항상 배열로 관리)
     onChange: (next: string[]) => void;
 
-    mode?: ToggleMode; // ✅ single이면 1개만, multi면 중복 선택 가능
-    columns?: 2 | 3 | 4 | 5 | 6; // ✅ 동적 클래스 금지 → 아래에서 안전하게 매핑
+    mode?: ToggleMode; // single이면 1개만, multi면 중복 선택 가능
+    columns?: 2 | 3 | 4 | 5 | 6; // 동적 클래스 금지 → 아래에서 안전하게 매핑
     buttonClassName?: string;
 
     // UX 옵션
@@ -39,7 +39,7 @@ export const ToggleButtonGroup: React.FC<ToggleButtonGroupProps> = ({
     const toggle = (opt: string) => {
         const active = value.includes(opt);
 
-        // ✅ 단일 선택
+        // 단일 선택
         if (mode === "single") {
             if (active) {
                 // allowEmpty=false면 해제 금지
@@ -50,7 +50,7 @@ export const ToggleButtonGroup: React.FC<ToggleButtonGroupProps> = ({
             return;
         }
 
-        // ✅ 다중 선택
+        // 다중 선택
         if (active) onChange(value.filter((v) => v !== opt));
         else onChange([...value, opt]);
     };

@@ -76,7 +76,6 @@ export const SeekerConsultation = () => {
 
     setIsSubmitting(true);
     try {
-      console.log("전송 데이터:", onboardingAll);
 
       await submitConsultation({ ...onboardingAll, role: "seeker" });
 
@@ -89,12 +88,6 @@ export const SeekerConsultation = () => {
     }
   };
 
-  // const onSubmit = () => {
-  //   // ✅ 나중에 여기서 MongoDB 저장 붙이면 됨
-  //   console.log("✅ 최종 온보딩 데이터:", onboardingAll);
-
-  //   handleNext();
-  // };
 
   return (
     <div>

@@ -3,7 +3,7 @@ type CheckboxProps = {
   label: string;
   checked?: boolean;
   onChange?: (checked: boolean) => void;
-  variant?: "multi" | "single"; // ✅ single이면 라디오처럼 보이게(동작은 부모가 제어)
+  variant?: "multi" | "single"; // single이면 라디오처럼 보이게(동작은 부모가 제어)
 };
 
 export const Checkbox = ({

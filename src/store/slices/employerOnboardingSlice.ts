@@ -76,7 +76,7 @@ const employerOnboardingSlice = createSlice({
     name: "employerOnboarding",
     initialState,
     reducers: {
-        // ✅ BasicInfo
+        // BasicInfo
         setCompanyName(state, action: PayloadAction<string>) {
             state.basicInfo.companyName = action.payload;
         },
@@ -108,7 +108,7 @@ const employerOnboardingSlice = createSlice({
             state.basicInfo.phone3 = action.payload;
         },
 
-        // ✅ Conditions
+        // Conditions
         setTask(state, action: PayloadAction<string | null>) {
             state.conditions.task = action.payload;
         },
@@ -128,7 +128,7 @@ const employerOnboardingSlice = createSlice({
             state.conditions.salaryRaw = action.payload;
         },
 
-        // ✅ Additional
+        // Additional
         setCareers(state, action: PayloadAction<string[]>) {
             state.additional.careers = action.payload;
         },

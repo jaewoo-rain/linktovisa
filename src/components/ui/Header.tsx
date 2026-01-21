@@ -18,11 +18,9 @@ export const Header = () => {
     }
 
     if (!openTranslate) {
-      // ✅ 기본 번역 ON (영어)
       select.value = "en";
       select.dispatchEvent(new Event("change"));
     } else {
-      // ✅ 번역 OFF (원본 한국어)
       select.value = "ko"; // ← 핵심
       select.dispatchEvent(new Event("change"));
     }
@@ -34,7 +32,6 @@ export const Header = () => {
     setOpenTranslate((v) => !v);
   };
 
-  // 🔽 번역 UI 토글
   useEffect(() => {
     const wrapper = document.getElementById("gt-wrapper");
     if (!wrapper) return;
